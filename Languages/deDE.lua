@@ -39,6 +39,7 @@ L["Total Average Per Hour:"] = "Gesamtdurchschnitt pro Stunde:"
 L["Total Value:"] = "Gesamtwert:"
 L["Left click: Toggle timer"] = "Linksklick: Timer anhalten/fortsetzen"
 L["Right click: Reset data"] = "Rechtsklick: Daten zur\195\188cksetzen"
+L["Shift + Left/Right click: Toggle settings"] = "Shift + Left/Right click: Toggle settings"
 L["Hr"] = "Std."
 
 L["Ore"] = "Erz"

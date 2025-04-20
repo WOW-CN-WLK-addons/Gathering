@@ -39,6 +39,7 @@ L["Total Average Per Hour:"] = "Total Average Per Hour:"
 L["Total Value:"] = "Total Value:"
 L["Left click: Toggle timer"] = "Left click: Toggle timer"
 L["Right click: Reset data"] = "Right click: Reset data"
+L["Shift + Left/Right click: Toggle settings"] = "Shift + Left/Right click: Toggle settings"
 L["Hr"] = "Hr"
 
 L["Ore"] = "Ore"

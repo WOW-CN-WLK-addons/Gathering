@@ -39,6 +39,7 @@ L["Total Average Per Hour:"] = "Moyenne totale par heure:"
 L["Total Value:"] = "Valeur totale:"
 L["Left click: Toggle timer"] = "Clic gauche : Minuterie on/off"
 L["Right click: Reset data"] = "Clic droit : Réinitialisation des données"
+L["Shift + Left/Right click: Toggle settings"] = "Shift + Left/Right click: Toggle settings"
 L["Hr"] = "Hr"
 
 L["Ore"] = "Minerai"

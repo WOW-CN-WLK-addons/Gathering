@@ -2209,6 +2209,7 @@ function Gathering:OnEnter()
 		end
 		Tooltip:AddLine(L["Left click: Toggle timer"])
 		Tooltip:AddLine(L["Right click: Reset data"])
+		Tooltip:AddLine(L["Shift + Left/Right click: Toggle settings"])
 	end
 
 	self:UpdateTooltipFont()
@@ -2231,7 +2232,9 @@ function Gathering:OnLeave()
 end
 
 function Gathering:OnMouseUp(button)
-	if (button == "LeftButton") then
+	if IsShiftKeyDown() then
+		SlashCmdList["GATHERING"]()
+	elseif (button == "LeftButton") then
 		self:ToggleTimer()
 	elseif (button == "RightButton") then
 		self:ToggleResetPopup()
