@@ -1432,7 +1432,7 @@ function Gathering:SetupSettingsPage(page)
 	self:CreateHeader(RightWidgets, BAGSLOTTEXT)
 
 	self:CreateCheckbox(RightWidgets, "EnableSlotBar", SHOW_FREE_BAG_SLOTS_TEXT, self.ToggleSlotBar)
-	self:CreateCheckbox(RightWidgets, "SlotBarTooltip", "Enable Tooltip")
+	self:CreateCheckbox(RightWidgets, "SlotBarTooltip", L["Enable Tooltip"])
 	self:CreateNumberEditBox(RightWidgets, "SlotBarHeight", COMPACT_UNIT_FRAME_PROFILE_FRAMEHEIGHT, self.UpdateSlotBarHeight)
 
 	self:SortWidgets(LeftWidgets)
@@ -1795,33 +1795,33 @@ function Gathering:SetupStatsPage(page)
 
 	local PerSec = (self.XPGained / (GetTime() - self.XPStartTime)) or 0
 
-	self:CreateHeader(RightWidgets, "Experience")
-	page.Stats.sessionxp = self:CreateStatLine(RightWidgets, format("Session: %s", self.SessionStats.xp or 0))
-	page.Stats.PerHour = self:CreateStatLine(RightWidgets, format("XP / Hr: %s", self:Comma((PerSec * 60) * 60)))
+	self:CreateHeader(RightWidgets, L["XP"])
+	page.Stats.sessionxp = self:CreateStatLine(RightWidgets, format(L["Session: %s"], self.SessionStats.xp or 0))
+	page.Stats.PerHour = self:CreateStatLine(RightWidgets, format(L["XP / Hr: %s"], self:Comma((PerSec * 60) * 60)))
 
 	if (self.XPGained and self.XPGained > 0) then
-		page.Stats.TTL = self:CreateStatLine(RightWidgets, format("%s until level", self:FormatFullTime((UnitXPMax("player") - UnitXP("player")) / PerSec)))
+		page.Stats.TTL = self:CreateStatLine(RightWidgets, format(L["%s until level"], self:FormatFullTime((UnitXPMax("player") - UnitXP("player")) / PerSec)))
 	else
-		page.Stats.TTL = self:CreateStatLine(RightWidgets, "0s until level")
+		page.Stats.TTL = self:CreateStatLine(RightWidgets, L["0s until level"])
 	end
 
-	self:CreateHeader(RightWidgets, "Overall stats")
-	page.Stats.xp = self:CreateStatLine(RightWidgets, format("XP Gained: %s", self:Comma(GatheringStats.xp) or 0))
-	page.Stats.levels = self:CreateStatLine(RightWidgets, format("Levels Gained: %s", GatheringStats.levels or 0))
-	page.Stats.totalgold = self:CreateStatLine(RightWidgets, format("Gold Looted: %s", self:CopperToGold(GatheringStats.gold or 0)))
-	page.Stats.totalitems = self:CreateStatLine(RightWidgets, format("Items Looted: %s", self:Comma(GatheringStats.total) or 0))
+	self:CreateHeader(RightWidgets, L["Overall stats"])
+	page.Stats.xp = self:CreateStatLine(RightWidgets, format(L["XP Gained: %s"], self:Comma(GatheringStats.xp) or 0))
+	page.Stats.levels = self:CreateStatLine(RightWidgets, format(L["Levels Gained: %s"], GatheringStats.levels or 0))
+	page.Stats.totalgold = self:CreateStatLine(RightWidgets, format(L["Gold Looted: %s"], self:CopperToGold(GatheringStats.gold or 0)))
+	page.Stats.totalitems = self:CreateStatLine(RightWidgets, format(L["Items Looted: %s"], self:Comma(GatheringStats.total) or 0))
 
-	self:CreateHeader(LeftWidgets, "Gold")
-	page.Stats.sessiongold = self:CreateStatLine(LeftWidgets, format("Profit: %s", self:CopperToGold(Gathering.GoldGained or 0)))
-	page.Stats.gph = self:CreateStatLine(LeftWidgets, format("Gold Per Hour: %s", self:CopperToGold(Gathering.GoldGained or 0)))
-	page.Stats.bagvalue = self:CreateStatLine(LeftWidgets, format("Inventory Trash Value: %s", self:CopperToGold(self:GetTrashValue())))
+	self:CreateHeader(LeftWidgets, L["Gold"])
+	page.Stats.sessiongold = self:CreateStatLine(LeftWidgets, format(L["Profit: %s"], self:CopperToGold(Gathering.GoldGained or 0)))
+	page.Stats.gph = self:CreateStatLine(LeftWidgets, format(L["Gold Per Hour: %s"], self:CopperToGold(Gathering.GoldGained or 0)))
+	page.Stats.bagvalue = self:CreateStatLine(LeftWidgets, format(L["Inventory Trash Value: %s"], self:CopperToGold(self:GetTrashValue())))
 
-	self:CreateHeader(LeftWidgets, "Items")
-	page.Stats.items = self:CreateStatLine(LeftWidgets, format("Items Looted: %s", self.SessionStats.total or 0))
+	self:CreateHeader(LeftWidgets, L["Items"])
+	page.Stats.items = self:CreateStatLine(LeftWidgets, format(L["Items Looted: %s"], self.SessionStats.total or 0))
 	--page.Stats.itemsphr = self:CreateStatLine(LeftWidgets, format("Items Per Hour: %s", 0))
 
 	if GatheringStats.clouds then
-		page.Stats.clouds = self:CreateStatLine(LeftWidgets, format("Gas Clouds: %s", self:Comma(GatheringStats.clouds) or 0))
+		page.Stats.clouds = self:CreateStatLine(LeftWidgets, format(L["Gas Clouds: %s"], self:Comma(GatheringStats.clouds) or 0))
 	end
 
 	self:SortWidgets(LeftWidgets)
@@ -1833,22 +1833,22 @@ function Gathering:UpdateItemsStat()
 		return
 	end
 
-	local page = self:GetPage("Stats")
+	local page = self:GetPage(L["Stats"])
 
 	if (not page) then
 		return
 	end
 
 	if page.Stats.totalitems then
-		page.Stats.totalitems.Text:SetText(format("Items Looted: %s", self:Comma(GatheringStats.total) or 0))
+		page.Stats.totalitems.Text:SetText(format(L["Items Looted: %s"], self:Comma(GatheringStats.total) or 0))
 	end
 
 	if page.Stats.items then
-		page.Stats.items.Text:SetText(format("Items Looted: %s", self:Comma(self.SessionStats.total) or 0))
+		page.Stats.items.Text:SetText(format(L["Items Looted: %s"], self:Comma(self.SessionStats.total) or 0))
 	end
 
 	if page.Stats.bagvalue then
-		page.Stats.bagvalue.Text:SetText(format("Inventory Trash Value: %s", self:CopperToGold(self:GetTrashValue())))
+		page.Stats.bagvalue.Text:SetText(format(L["Inventory Trash Value: %s"], self:CopperToGold(self:GetTrashValue())))
 	end
 end
 
@@ -1857,36 +1857,36 @@ function Gathering:UpdateXPStat()
 		return
 	end
 
-	local page = self:GetPage("Stats")
+	local page = self:GetPage(L["Stats"])
 
 	if (not page) then
 		return
 	end
 
 	if page.Stats.xp then
-		page.Stats.xp.Text:SetText(format("XP Gained: %s", self:Comma(GatheringStats.xp) or 0))
+		page.Stats.xp.Text:SetText(format(L["XP Gained: %s"], self:Comma(GatheringStats.xp) or 0))
 	end
 
 	if page.Stats.sessionxp then
-		page.Stats.sessionxp.Text:SetText(format("Session: %s", self:Comma(Gathering.XPGained) or 0))
+		page.Stats.sessionxp.Text:SetText(format(L["Session: %s"], self:Comma(Gathering.XPGained) or 0))
 	end
 
 	local PerSec = (self.XPGained / (GetTime() - self.XPStartTime)) or 0
 
 	if page.Stats.PerHour then
-		page.Stats.PerHour.Text:SetText(format("XP / Hr: %s", self:Comma((PerSec * 60) * 60)))
+		page.Stats.PerHour.Text:SetText(format(L["XP / Hr: %s"], self:Comma((PerSec * 60) * 60)))
 	end
 
 	if page.Stats.TTL then
 		if (self.XPGained > 0) then
-			page.Stats.TTL.Text:SetText(format("%s until level", self:FormatFullTime((UnitXPMax("player") - UnitXP("player")) / PerSec)))
+			page.Stats.TTL.Text:SetText(format(L["%s until level"], self:FormatFullTime((UnitXPMax("player") - UnitXP("player")) / PerSec)))
 		else
-			page.Stats.TTL.Text:SetText("0s until level")
+			page.Stats.TTL.Text:SetText(L["0s until level"])
 		end
 	end
 
 	if page.Stats.levels then
-		page.Stats.levels.Text:SetText(format("Levels Gained: %s", GatheringStats.levels or 0))
+		page.Stats.levels.Text:SetText(format(L["Levels Gained: %s"], GatheringStats.levels or 0))
 	end
 end
 
@@ -1895,22 +1895,22 @@ function Gathering:UpdateMoneyStat()
 		return
 	end
 
-	local page = self:GetPage("Stats")
+	local page = self:GetPage(L["Stats"])
 
 	if (not page) then
 		return
 	end
 
 	if page.Stats.totalgold then
-		page.Stats.totalgold.Text:SetText(format("Gold Looted: %s", self:CopperToGold(GatheringStats.gold) or 0))
+		page.Stats.totalgold.Text:SetText(format(L["Gold Looted: %s"], self:CopperToGold(GatheringStats.gold) or 0))
 	end
 
 	if page.Stats.sessiongold then
-		page.Stats.sessiongold.Text:SetText(format("Profit: %s", self:CopperToGold(Gathering.GoldGained) or 0))
+		page.Stats.sessiongold.Text:SetText(format(L["Profit: %s"], self:CopperToGold(Gathering.GoldGained) or 0))
 	end
 
 	if page.Stats.gph then
-		page.Stats.gph.Text:SetText(format("GPH: %s", self:CopperToGold(floor((self.GoldGained / max(GetTime() - self.GoldTimer, 1)) * 60 * 60))))
+		page.Stats.gph.Text:SetText(format(L["GPH: %s"], self:CopperToGold(floor((self.GoldGained / max(GetTime() - self.GoldTimer, 1)) * 60 * 60))))
 	end
 end
 

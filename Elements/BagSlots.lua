@@ -1,5 +1,6 @@
 local Name, AddOn = ...
 local Gathering = AddOn.Gathering
+local L = AddOn.L
 
 local GetNumSlots, GetNumFreeSlots, ContainerToInventoryID
 local NUM_BAG_SLOTS = NUM_BAG_SLOTS
@@ -55,7 +56,7 @@ local OnEnter = function(self)
 
 	local Percent = math.floor((UsedSlots / TotalSlots) * 100 + 0.5)
 
-	Tooltip:AddLine("Bag Space")
+	Tooltip:AddLine(L["Bag Space"])
 	Tooltip:AddLine(" ")
 	Tooltip:AddLine(string.format("%d / %d (%d%%)", UsedSlots, TotalSlots, Percent), 1, 1, 1)
 
