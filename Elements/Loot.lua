@@ -8,7 +8,9 @@ local match = string.match
 
 local ValidMessages = {
 	[LOOT_ITEM_SELF:gsub("%%.*", "")] = true,
+	[LOOT_ITEM_SELF_MULTIPLE:gsub("%%.*", "")] = true,
 	[LOOT_ITEM_PUSHED_SELF:gsub("%%.*", "")] = true,
+	[LOOT_ITEM_PUSHED_SELF_MULTIPLE:gsub("%%.*", "")] = true,
 }
 
 function Gathering:CHAT_MSG_LOOT(msg)
