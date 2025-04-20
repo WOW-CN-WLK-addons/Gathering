@@ -1,7 +1,8 @@
 local Name, AddOn = ...
 local Gathering = AddOn.Gathering
 local CT = ChatThrottleLib
-local AddOnVersion = GetAddOnMetadata("Gathering", "Version")
+
+local AddOnVersion = (C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata)("Gathering", "Version")
 local AddOnNum = tonumber(AddOnVersion)
 
 local ChannelCD = {}
@@ -82,7 +83,6 @@ function Gathering:CHAT_MSG_ADDON(prefix, message, channel, sender)
 		end)
 	elseif (message > AddOnNum) then -- We're behind!
 		print(format("Update |cffFFC44DGathering|r to version %s! www.curseforge.com/wow/addons/gathering", message))
-		print("Join the Discord community for support and feedback discord.gg/XefDFa6nJR")
 
 		AddOnNum = message
 		AddOnVersion = tostring(message)
