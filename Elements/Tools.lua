@@ -1,5 +1,6 @@
 local Name, AddOn = ...
 local Gathering = AddOn.Gathering
+local L = AddOn.L
 
 local gsub = string.gsub
 local match = string.match
@@ -60,17 +61,17 @@ function Gathering:CopperToGold(copper)
 	local String = ""
 
 	if (Gold > 0) then
-		String = self:Comma(Gold) .. "|cffffe02eg|r"
+		String = self:Comma(Gold) .. "|cffffe02e"..L["g"].."|r"
 		Separator = " "
 	end
 
 	if (Silver > 0) then
-		String = String .. Separator .. Silver .. "|cffd6d6d6s|r"
+		String = String .. Separator .. Silver .. "|cffd6d6d6"..L["s"].."|r"
 		Separator = " "
 	end
 
 	if (Copper > 0 or String == "") then
-		String = String .. Separator .. Copper .. "|cfffc8d2bc|r"
+		String = String .. Separator .. Copper .. "|cfffc8d2b"..L["c"].."|r"
 	end
 
 	return String

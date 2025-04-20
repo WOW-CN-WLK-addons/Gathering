@@ -30,6 +30,10 @@ L["Gas Clouds: %s"] = "气云：%s"
 L["GPH: %s"] = "每小时金币：%s"
 L["Enable Tooltip"] = "启用工具提示框"
 
+L["g"] = "金"
+L["s"] = "银"
+L["c"] = "铜"
+
 L["Total Gathered:"] = "总共采集："
 L["Total Average Per Hour:"] = "每小时平均数量："
 L["Total Value:"] = "总价值："

@@ -30,6 +30,10 @@ L["Gas Clouds: %s"] = "Gas Clouds: %s"
 L["GPH: %s"] = "GPH: %s"
 L["Enable Tooltip"] = "Enable Tooltip"
 
+L["g"] = "g"
+L["s"] = "s"
+L["c"] = "c"
+
 L["Total Gathered:"] = "Gesammelt total:"
 L["Total Average Per Hour:"] = "Gesamtdurchschnitt pro Stunde:"
 L["Total Value:"] = "Gesamtwert:"
