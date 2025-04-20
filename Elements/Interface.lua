@@ -286,7 +286,7 @@ function Gathering:UpdateTooltipFont()
 		local Region = select(i, self.Tooltip:GetRegions())
 
 		if (Region:GetObjectType() == "FontString") then
-			Region:SetFont(Font, 12)
+			Region:SetFont(Font, 14)
 			Region:SetShadowColor(0, 0, 0)
 			Region:SetShadowOffset(1, -1)
 		end
@@ -882,7 +882,7 @@ local FontSelectionOnMouseUp = function(self)
 			Tex:SetVertexColor(0.184, 0.192, 0.211)
 
 			local Text = Selection:CreateFontString(nil, "OVERLAY")
-			Text:SetFont(Path, 12)
+			Text:SetFont(Path, 14)
 			Text:SetSize(134, 18)
 			Text:SetPoint("LEFT", Selection, 5, 0)
 			Text:SetJustifyH("LEFT")
@@ -2095,10 +2095,6 @@ function Gathering:OnEnter()
 	local GoldGained = self.GoldGained
 	local XPGained = self.XPGained
 
-	if (TotalGathered == 0 and GoldGained == 0 and XPGained == 0) then
-		return
-	end
-
 	self.MouseIsOver = true
 
 	local Now = GetTime()
@@ -2208,7 +2204,9 @@ function Gathering:OnEnter()
 	end
 
 	if self.Settings.ShowTooltipHelp then
-		Tooltip:AddLine(" ")
+		if (not (TotalGathered == 0 and GoldGained == 0 and XPGained == 0)) then
+			Tooltip:AddLine(" ")
+		end
 		Tooltip:AddLine(L["Left click: Toggle timer"])
 		Tooltip:AddLine(L["Right click: Reset data"])
 	end
