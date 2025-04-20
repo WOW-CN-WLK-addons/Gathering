@@ -6,6 +6,11 @@ end
 
 local L = AddOn.L
 
+L["Settings"] = "Settings"
+L["Tracking"] = "Tracking"
+L["Ignore"] = "Ignore"
+L["Stats"] = "Stats"
+
 L["Total Gathered:"] = "Gesammelt total:"
 L["Total Average Per Hour:"] = "Gesamtdurchschnitt pro Stunde:"
 L["Total Value:"] = "Gesamtwert:"

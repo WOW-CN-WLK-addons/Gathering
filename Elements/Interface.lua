@@ -1305,7 +1305,7 @@ function Gathering:AddPage(name)
 
 	local Text = Tab:CreateFontString(nil, "OVERLAY")
 	Text:SetPoint("LEFT", Tab, 5, -0.5)
-	Text:SetFont(SharedMedia:Fetch("font", self.Settings.WindowFont), 12, "")
+	Text:SetFont(SharedMedia:Fetch("font", self.Settings.WindowFont), 14, "")
 	Text:SetJustifyH("LEFT")
 	Text:SetShadowColor(0, 0, 0)
 	Text:SetShadowOffset(1, -1)
@@ -1977,16 +1977,16 @@ function Gathering:CreateGUI()
 
 	self.GUI = GUI
 
-	local SettingsPage = self:AddPage("Settings")
+	local SettingsPage = self:AddPage(L["Settings"])
 	self:SetupSettingsPage(SettingsPage)
 
-	local TrackingPage = self:AddPage("Tracking")
+	local TrackingPage = self:AddPage(L["Tracking"])
 	self:SetupTrackingPage(TrackingPage)
 
-	local IgnorePage = self:AddPage("Ignore")
+	local IgnorePage = self:AddPage(L["Ignore"])
 	self:SetupIgnorePage(IgnorePage)
 
-	local StatsPage = self:AddPage("Stats")
+	local StatsPage = self:AddPage(L["Stats"])
 	self:SetupStatsPage(StatsPage)
 
 	for i = 1, #self.Tabs do
@@ -1998,12 +1998,11 @@ function Gathering:CreateGUI()
 	end
 
 	-- Separate tab at bottom of the list
-	local SupporterPage = self:AddPage("Supporters")
-	self:SetupSupporterPage(SupporterPage)
+	-- local SupporterPage = self:AddPage("Supporters")
+	-- self:SetupSupporterPage(SupporterPage)
+	-- self.Tabs[#self.Tabs]:SetPoint("BOTTOMLEFT", self.GUI.TabParent, 4, 4)
 
-	self.Tabs[#self.Tabs]:SetPoint("BOTTOMLEFT", self.GUI.TabParent, 4, 4)
-
-	self:ShowPage("Settings")
+	self:ShowPage(L["Settings"])
 end
 
 function Gathering:MODIFIER_STATE_CHANGED()

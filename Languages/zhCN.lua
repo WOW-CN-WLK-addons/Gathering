@@ -6,6 +6,11 @@ end
 
 local L = AddOn.L
 
+L["Settings"] = "设置"
+L["Tracking"] = "追踪"
+L["Ignore"] = "忽略"
+L["Stats"] = "统计"
+
 L["Total Gathered:"] = "总共采集："
 L["Total Average Per Hour:"] = "每小时平均数量："
 L["Total Value:"] = "总价值："
